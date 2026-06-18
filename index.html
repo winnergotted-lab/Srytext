@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="เปลี่ยนตัวอักษรธรรมดาเป็นฟอนต์พิเศษสุดน่ารัก ✨ สำหรับแต่งไบโอ IG, ตั้งชื่อเกม, ฟอนต์สไตล์อังกฤษเก๋ๆ ก๊อปปี้ไปใช้ได้ทันที ฟรี!">
+    <title>Srytext - Fancy Text Generator</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            max-width: 600px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            text-align: center;
+            background-color: #f5f7fb;
+            color: #333;
+        }
+        h2 { color: #4a6fa5; margin-bottom: 5px; }
+        p { color: #777; font-size: 14px; margin-bottom: 25px; }
+        input { 
+            width: 100%; 
+            padding: 15px; 
+            font-size: 18px; 
+            margin-bottom: 25px; 
+            box-sizing: border-box; 
+            border: 2px solid #cbd5e1;
+            border-radius: 10px;
+            outline: none;
+            transition: 0.3s;
+        }
+        input:focus { border-color: #4a6fa5; box-shadow: 0 0 8px rgba(74, 111, 165, 0.2); }
+        .grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        @media (min-width: 480px) { .grid { grid-template-columns: 1fr 1fr; } }
+        .font-box { 
+            border: 1px solid #e2e8f0; 
+            padding: 15px; 
+            border-radius: 10px; 
+            background: #ffffff; 
+            text-align: left; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .font-name { font-size: 11px; color: #94a3b8; font-weight: bold; text-transform: uppercase; margin-bottom: 8px; }
+        .result { font-size: 18px; word-break: break-all; min-height: 28px; color: #1e293b; }
+    </style>
+</head>
+<body>
+
+    <h2>Srytext ✨</h2>
+    <p>พิมพ์ข้อความภาษาอังกฤษด้านล่าง เพื่อแปลงเป็นฟอนต์พิเศษ</p>
+    
+    <!-- ช่องกรอกข้อความ -->
+    <input type="text" id="inputText" placeholder="Type something here..." oninput="generateText()">
+
+    <!-- โซนแสดงผลแยกเป็นกล่องๆตามฟอนต์ -->
+    <div class="grid">
+        <div class="font-box">
+            <div class="font-name">Gothic / ตัวพิมพ์โกธิค</div>
+            <div class="result" id="font1"></div>
+        </div>
+        <div class="font-box">
+            <div class="font-name">Script / ตัวเขียนลายมือ</div>
+            <div class="result" id="font2"></div>
+        </div>
+        <div class="font-box">
+            <div class="font-name">Bold / ตัวหนาเท่ๆ</div>
+            <div class="result" id="font3"></div>
+        </div>
+        <div class="font-box">
+            <div class="font-name">Double Struck / ตัวโปร่ง</div>
+            <div class="result" id="font4"></div>
+        </div>
+    </div>
+
+    <script>
+        // แผนผังสำหรับแปลงอักษรธรรมดาเป็นสัญลักษณ์อักษรพิเศษ (Unicode)
+        const gothicMap = { 'a': '𝔞', 'b': '𝔟', 'c': '𝔠', 'd': '𝔡', 'e': '𝔢', 'f': '𝔣', 'g': '𝔤', 'h': '𝔥', 'i': '𝔦', 'j': '𝔧', 'k': '𝔨', 'l': '𝔩', 'm': '𝔪', 'n': '𝔫', 'o': '𝔬', 'p': '𝔭', 'q': '𝔮', 'r': '𝔯', 's': '𝔰', 't': '𝔱', 'u': '𝔲', 'v': '𝔳', 'w': '𝔴', 'x': '𝔵', 'y': '𝔶', 'z': '𝔷', 'A': '𝔄', 'B': '𝔅', 'C': 'ℭ', 'D': '𝔇', 'E': '𝔈', 'F': '𝔉', 'G': '𝔊', 'H': 'ℌ', 'I': 'ℑ', 'J': '𝔍', 'K': '𝔎', 'L': '𝔏', 'M': '𝔐', 'N': '𝔑', 'O': '𝔒', 'P': '𝔓', 'Q': '𝔔', 'R': 'ℛ', 'S': '𝔖', 'T': '𝔗', 'U': '𝔘', 'V': '𝔙', 'W': '𝔚', 'X': '𝔛', 'Y': '𝔜', 'Z': 'ℨ' };
+        const scriptMap = { 'a': '𝓪', 'b': '𝓫', 'c': '𝓬', 'd': '𝓭', 'e': '𝓮', 'f': '𝓯', 'g': '𝓰', 'h': '𝓱', 'i': '𝓲', 'j': '𝓳', 'k': '𝓴', 'l': '𝓵', 'm': '𝓶', 'n': '𝓷', 'o': '𝓸', 'p': '𝓹', 'q': '𝓺', 'r': '𝓻', 's': '𝓼', 't': '𝓽', 'u': '𝓾', 'v': '𝓿', 'w': '𝔀', 'x': '𝔁', 'y': '𝔂', 'z': '𝔃', 'A': '𝓐', 'B': '𝓑', 'C': '𝓒', 'D': '𝓓', 'E': '𝓔', 'F': '𝓕', 'G': '𝓖', 'H': '𝓗', 'I': '𝓘', 'J': '𝓵', 'K': '𝓚', 'L': '𝓛', 'M': '𝓜', 'N': '𝓝', 'O': '𝓞', 'P': '𝓟', 'Q': '𝓠', 'R': '𝓡', 'S': '𝓢', 'T': '𝓣', 'U': '𝓤', 'V': '𝓥', 'W': '𝓦', 'X': '𝓧', 'Y': '𝓨', 'Z': '𝓩' };
+        const boldMap = { 'a': 'mathbf{a}', 'b': 'mathbf{b}', 'c': 'mathbf{c}', 'd': 'mathbf{d}', 'e': 'mathbf{e}', 'f': 'mathbf{f}', 'g': 'mathbf{g}', 'h': 'mathbf{h}', 'i': 'mathbf{i}', 'j': 'mathbf{j}', 'k': 'mathbf{k}', 'l': 'mathbf{l}', 'm': 'mathbf{m}', 'n': 'mathbf{n}', 'o': 'mathbf{o}', 'p': 'mathbf{p}', 'q': 'mathbf{q}', 'r': 'mathbf{r}', 's': 'mathbf{s}', 't': 'mathbf{t}', 'u': 'mathbf{u}', 'v': 'mathbf{v}', 'w': 'mathbf{w}', 'x': 'mathbf{x}', 'y': 'mathbf{y}', 'z': 'mathbf{z}', 'A': 'mathbf{A}', 'B': 'mathbf{B}', 'C': 'mathbf{C}', 'D': 'mathbf{D}', 'E': 'mathbf{E}', 'F': 'mathbf{F}', 'G': 'mathbf{G}', 'H': 'mathbf{H}', 'I': 'mathbf{I}', 'J': 'mathbf{J}', 'K': 'mathbf{K}', 'L': 'mathbf{L}', 'M': 'mathbf{M}', 'N': 'mathbf{N}', 'O': 'mathbf{O}', 'P': 'mathbf{P}', 'Q': 'mathbf{Q}', 'R': 'mathbf{R}', 'S': 'mathbf{S}', 'T': 'mathbf{T}', 'U': 'mathbf{U}', 'V': 'mathbf{V}', 'W': 'mathbf{W}', 'X': 'mathbf{X}', 'Y': 'mathbf{Y}', 'Z': 'mathbf{Z}' };
+        const doubleMap = { 'a': '𝕒', 'b': '𝕓', 'c': '𝕔', 'd': '𝕕', 'e': '𝕖', 'f': '𝕗', 'g': '𝕘', 'h': '𝕙', 'i': '𝕚', 'j': '𝕛', 'k': '𝕜', 'l': '𝕝', 'm': '𝕞', 'n': '𝕟', 'o': '𝕠', 'p': '𝕡', 'q': '𝕢', 'r': '𝕣', 's': '𝕤', 't': '𝕥', 'u': '𝕦', 'v': '𝕧', 'w': '𝕨', 'x': '𝕩', 'y': '𝕪', 'z': '𝕫', 'A': '𝔸', 'B': '𝔹', 'C': 'ℂ', 'D': '𝔻', 'E': '𝔼', 'F': '𝔽', 'G': '𝔾', 'H': 'ℍ', 'I': '𝕀', 'J': '𝕁', 'K': '𝕂', 'L': '𝕃', 'M': '𝕄', 'N': 'ℕ', 'O': '𝕆', 'P': 'ℙ', 'Q': 'ℚ', 'R': 'ℝ', 'S': '𝕊', 'T': '𝕋', 'U': '𝕌', 'V': '𝕍', 'W': '𝕎', 'X': '𝕏', 'Y': '𝕐', 'Z': 'ℤ' };
+
+        // ฟังก์ชันในการแปลงข้อความ
+        function convert(text, map) {
+            return text.split('').map(char => map[char] || char).join('');
+        }
+
+        // ฟังก์ชันที่จะทำงานทุกครั้งที่มีการพิมพ์
+        function generateText() {
+            const input = document.getElementById('inputText').value;
+            
+            // สั่งอัปเดตข้อความในแต่ละกล่องฟอนต์
+            document.getElementById('font1').innerText = convert(input, gothicMap);
+            document.getElementById('font2').innerText = convert(input, scriptMap);
+            document.getElementById('font3').innerText = convert(input, boldMap);
+            document.getElementById('font4').innerText = convert(input, doubleMap);
+        }
+    </script>
+</body>
+</html>
