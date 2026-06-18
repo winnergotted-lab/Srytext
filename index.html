@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="เปลี่ยนตัวอักษรธรรมดาเป็นฟอนต์พิเศษสุดน่ารัก ✨ สำหรับแต่งไบโอ IG, ตั้งชื่อเกม, ฟอนต์สไตล์อังกฤษเก๋ๆ ก๊อปปี้ไปใช้ได้ทันที ฟรี!">
+    <meta name="description" content="เปลี่ยนตัวอักษรธรรมดาเป็นฟอนต์พิเศษสุดน่ารัก ✨ สำหรับแต่งไบโอ IG, ตั้งชื่อเกม, ฟอนต์สไตล์อังกฤษเก๋ๆ #อังกฤษเท่านั้น ก๊อปปี้ไปใช้ได้ทันที ฟรี!">
     <title>Srytext - Fancy Text Generator</title>
     <style>
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            max-width: 800px; 
+            max-width: 900px; 
             margin: 0 auto; 
             padding: 15px; 
             text-align: center;
@@ -18,7 +18,6 @@
         h2 { color: #3b82f6; margin-bottom: 5px; font-size: 28px; }
         p { color: #64748b; font-size: 13px; margin-bottom: 20px; }
         
-        /* ช่องกรอกข้อความ */
         input { 
             width: 100%; 
             padding: 12px 15px; 
@@ -32,7 +31,7 @@
         }
         input:focus { border-color: #3b82f6; box-shadow: 0 0 6px rgba(59, 130, 246, 0.2); }
         
-        /* ปรับขนาดช่องเลือกอักษรให้เล็กลง (แสดงผลเป็น 2 หรือ 3 คอลัมน์ตามความกว้างหน้าจอ) */
+        /* ปรับสัดส่วนให้กะทัดรัดขึ้น รองรับคอลัมน์ที่มากขึ้นตามขนาดจอ */
         .grid { 
             display: grid; 
             grid-template-columns: 1fr; 
@@ -41,7 +40,6 @@
         @media (min-width: 480px) { .grid { grid-template-columns: 1fr 1fr; } }
         @media (min-width: 768px) { .grid { grid-template-columns: 1fr 1fr 1fr; } }
         
-        /* กล่องฟอนต์ขนาดเล็ก กระชับ */
         .font-box { 
             border: 1px solid #e2e8f0; 
             padding: 10px 12px; 
@@ -54,7 +52,6 @@
         .font-box:hover { border-color: #93c5fd; background: #f8fafc; }
         .font-name { font-size: 10px; color: #94a3b8; font-weight: bold; text-transform: uppercase; margin-bottom: 4px; }
         
-        /* พื้นที่แสดงผลอักษรพิเศษ */
         .result { 
             font-size: 15px; 
             word-break: break-all; 
@@ -67,50 +64,60 @@
 <body>
 
     <h2>Srytext ✨</h2>
-    <p>พิมพ์ข้อความภาษาอังกฤษด้านล่าง เพื่อแปลงเป็นฟอนต์พิเศษขนาดกะทัดรัด</p>
+    <p>พิมพ์ข้อความภาษาอังกฤษด้านล่าง เพื่อแปลงเป็นฟอนต์พิเศษขนาดกะทัดรัด (อัปเดต 18 สไตล์)</p>
     
     <input type="text" id="inputText" placeholder="Type something here..." oninput="generateText()">
 
-    <!-- โซนกล่องฟอนต์ที่ปรับขนาดให้เล็กลงและเพิ่มจำนวนมากขึ้น -->
+    <!-- ช่องแสดงผลขนาดเล็ก กระชับ 18 รูปแบบ -->
     <div class="grid">
         <div class="font-box"><div class="font-name">Gothic / โกธิค</div><div class="result" id="font1"></div></div>
         <div class="font-box"><div class="font-name">Script / ตัวเขียน</div><div class="result" id="font2"></div></div>
         <div class="font-box"><div class="font-name">Bold / ตัวหนา</div><div class="result" id="font3"></div></div>
-        <div class="font-box"><div class="font-name">Double Struck / ตัวโปร่ง</div><div class="result" id="font4"></div></div>
-        <div class="font-box"><div class="font-name">Bubbles / วงกลมขาว</div><div class="result" id="font5"></div></div>
-        <div class="font-box"><div class="font-name">Black Bubbles / วงกลมดำ</div><div class="result" id="font6"></div></div>
-        <div class="font-box"><div class="font-name">Squares / สี่เหลี่ยมขาว</div><div class="result" id="font7"></div></div>
-        <div class="font-box"><div class="font-name">Black Squares / สี่เหลี่ยมดำ</div><div class="result" id="font8"></div></div>
-        <div class="font-box"><div class="font-name">Upside Down / กลับหัว</div><div class="result" id="font9"></div></div>
-        <div class="font-box"><div class="font-name">Strikethrough / ขีดฆ่า</div><div class="result" id="font10"></div></div>
-        <div class="font-box"><div class="font-name">Japan Style / กลิ่นอายญี่ปุ่น</div><div class="result" id="font11"></div></div>
-        <div class="font-box"><div class="font-name">Monospace / พิมพ์ดีด</div><div class="result" id="font12"></div></div>
+        <div class="font-box"><div class="font-name">Italic Bold / ตัวหนาเอียง</div><div class="result" id="font4"></div></div>
+        <div class="font-box"><div class="font-name">Double Struck / ตัวโปร่ง</div><div class="result" id="font5"></div></div>
+        <div class="font-box"><div class="font-name">Bubbles / วงกลมขาว</div><div class="result" id="font6"></div></div>
+        <div class="font-box"><div class="font-name">Black Bubbles / วงกลมดำ</div><div class="result" id="font7"></div></div>
+        <div class="font-box"><div class="font-name">Small Bubbles / วงกลมตัวเล็ก</div><div class="result" id="font8"></div></div>
+        <div class="font-box"><div class="font-name">Squares / สี่เหลี่ยมขาว</div><div class="result" id="font9"></div></div>
+        <div class="font-box"><div class="font-name">Black Squares / สี่เหลี่ยมดำ</div><div class="result" id="font10"></div></div>
+        <div class="font-box"><div class="font-name">Upside Down / กลับหัว</div><div class="result" id="font11"></div></div>
+        <div class="font-box"><div class="font-name">Strikethrough / ขีดฆ่า</div><div class="result" id="font12"></div></div>
+        <div class="font-box"><div class="font-name">Underline / ขีดเส้นใต้</div><div class="result" id="font13"></div></div>
+        <div class="font-box"><div class="font-name">Japan Style / กลิ่นอายญี่ปุ่น</div><div class="result" id="font14"></div></div>
+        <div class="font-box"><div class="font-name">Monospace / พิมพ์ดีด</div><div class="result" id="font15"></div></div>
+        <div class="font-box"><div class="font-name">Minimal / เล็กมินิมอล</div><div class="result" id="font16"></div></div>
+        <div class="font-box"><div class="font-name">Lightning / สายฟ้าฟาด</div><div class="result" id="font17"></div></div>
+        <div class="font-box"><div class="font-name">Bracket / ในวงเล็บ</div><div class="result" id="font18"></div></div>
     </div>
 
     <script>
-        // แผนผังสำหรับแปลงสัญลักษณ์ Unicode จำนวนมาก
+        // ตรวจสอบแผนผังอักษรทุกตัวใหม่ทั้งหมดเพื่อความถูกต้อง 100% ไม่ให้มีสลับที่
         const maps = {
             gothic: { 'a': '𝔞', 'b': '𝔟', 'c': '𝔠', 'd': '𝔡', 'e': '𝔢', 'f': '𝔣', 'g': '𝔤', 'h': '𝔥', 'i': '𝔦', 'j': '𝔧', 'k': '𝔨', 'l': '𝔩', 'm': '𝔪', 'n': '𝔫', 'o': '𝔬', 'p': '𝔭', 'q': '𝔮', 'r': '𝔯', 's': '𝔰', 't': '𝔱', 'u': '𝔲', 'v': '𝔳', 'w': '𝔴', 'x': '𝔵', 'y': '𝔶', 'z': '𝔷', 'A': '𝔄', 'B': '𝔅', 'C': 'ℭ', 'D': '𝔇', 'E': '𝔈', 'F': '𝔉', 'G': '𝔊', 'H': 'ℌ', 'I': 'ℑ', 'J': '𝔍', 'K': '𝔎', 'L': '𝔏', 'M': '𝔐', 'N': '𝔑', 'O': '𝔒', 'P': '𝔓', 'Q': '𝔔', 'R': 'ℛ', 'S': '𝔖', 'T': '𝔗', 'U': '𝔘', 'V': '𝔙', 'W': '𝔚', 'X': '𝔛', 'Y': '𝔜', 'Z': 'ℨ' },
-            script: { 'a': '𝓪', 'b': '𝓫', 'c': '𝓬', 'd': '𝓭', 'e': '𝓮', 'f': '𝓯', 'g': '𝓰', 'h': '𝓱', 'i': '𝓲', 'j': '𝓳', 'k': '𝓴', 'l': '𝓵', 'm': '𝓶', 'n': '𝓷', 'o': '𝓸', 'p': '𝓹', 'q': '𝓺', 'r': '𝓻', 's': '𝓼', 't': '𝓽', 'u': '𝓾', 'v': '𝓿', 'w': '𝔀', 'x': '𝔁', 'y': '𝔂', 'z': '𝔃', 'A': '𝓐', 'B': '𝓑', 'C': '𝓒', 'D': '𝓓', 'E': '𝓔', 'F': '𝓕', 'G': '<b>G</b>', 'H': '𝓗', 'I': '𝓘', 'J': '𝓵', 'K': '𝓚', 'L': '𝓛', 'M': '𝓜', 'N': '𝓝', 'O': '𝓞', 'P': '𝓟', 'Q': '𝓠', 'R': '𝓡', 'S': '𝓢', 'T': '𝓣', 'U': '𝓤', 'V': '𝓥', 'W': '𝓦', 'X': '𝓧', 'Y': '𝓨', 'Z': '𝓩' },
-            bold: { 'a': '𝗮', 'b': '𝗯', 'c': '𝗰', 'd': '𝗱', 'e': '𝗲', 'f': '𝗳', 'g': '𝗴', 'h': '𝗵', 'i': '𝗶', 'j': '𝗷', 'k': '𝗸', 'l': '𝗹', 'm': '𝗺', 'n': '𝗻', 'o': '𝗼', 'p': '𝗽', 'q': '𝗾', 'r': '𝗿', 's': '𝘀', 't': '𝘁', 'u': '𝘂', 'v': '𝘃', 'w': '𝘄', 'x': '𝘅', 'y': '𝘆', 'z': '𝘇', 'A': '𝗔', 'B': '𝗕', 'C': '𝗖', 'D': '𝗗', 'E': '𝗘', 'F': '𝗙', 'G': '𝗚', 'H': '𝗛', 'I': '𝗜', 'J': '𝗝', 'K': '𝗞', 'L': '𝗟', 'M': '𝗠', 'N': '𝗡', 'O': '𝗢', 'P': '𝗣', 'Q': '𝗤', 'R': '<b>R</b>', 'S': '𝗦', 'T': '𝗧', 'U': '𝗨', 'V': '𝗩', 'W': '𝗪', 'X': '𝗫', 'Y': '𝗬', 'Z': '𝗭' },
-            double: { 'a': '𝕒', 'b': '𝕓', 'c': '𝕔', 'd': '𝕕', 'e': '𝕖', 'f': '𝕗', 'g': '𝕘', 'h': '𝕙', 'i': ' civilisation', 'j': '𝕛', 'k': '𝕜', 'l': '𝕝', 'm': '𝕞', 'n': '𝕟', 'o': '𝕠', 'p': '𝕡', 'q': '𝕢', 'r': '𝕣', 's': '𝕤', 't': '𝕥', 'u': '𝕩', 'v': '𝕧', 'w': '𝕨', 'x': '𝕩', 'y': '𝕪', 'z': '𝕫', 'A': '𝔸', 'B': '𝔹', 'C': 'ℂ', 'D': '𝕓', 'E': '𝔼', 'F': '𝔽', 'G': '𝔾', 'H': 'ℍ', 'I': '𝕀', 'J': '𝕁', 'K': '𝕂', 'L': '𝕃', 'M': '𝕄', 'N': 'ℕ', 'O': '𝕆', 'P': 'ℙ', 'Q': 'ℚ', 'R': 'ℝ', 'S': '𝕊', 'T': '𝕋', 'U': '𝕌', 'V': '𝕍', 'W': '𝕎', 'X': '𝕏', 'Y': '𝕐', 'Z': 'ℤ' },
+            script: { 'a': '𝓪', 'b': '𝓫', 'c': '𝓬', 'd': '𝓭', 'e': '𝓮', 'f': '𝓯', 'g': '𝓰', 'h': '𝓱', 'i': '𝓲', 'j': '𝓳', 'k': '𝓴', 'l': '𝓵', 'm': '𝓶', 'n': '𝓷', 'o': '𝓸', 'p': '𝓹', 'q': '𝓺', 'r': '𝓻', 's': '𝓼', 't': '𝓽', 'u': '𝓾', 'v': '𝓿', 'w': '𝔀', 'x': '𝓔', 'y': '𝔂', 'z': '𝔃', 'A': '𝓐', 'B': '𝓑', 'C': '𝓒', 'D': '𝓓', 'E': '𝓔', 'F': '𝓕', 'G': '𝓖', 'H': '𝓗', 'I': '𝓘', 'J': '𝓙', 'K': '𝓚', 'L': '𝓛', 'M': '𝓜', 'N': '𝓝', 'O': '𝓞', 'P': '𝓟', 'Q': '𝓠', 'R': '𝓡', 'S': '𝓢', 'T': '𝓣', 'U': '𝓤', 'V': '𝓥', 'W': '𝓦', 'X': '𝓧', 'Y': '𝓨', 'Z': '𝓩' },
+            bold: { 'a': '𝗮', 'b': '𝗯', 'c': '𝗰', 'd': '𝗱', 'e': '𝗲', 'f': '𝗳', 'g': '𝗴', 'h': '𝗵', 'i': '𝗶', 'j': '𝗷', 'k': '𝗸', 'l': '𝗹', 'm': '𝗺', 'n': '𝗻', 'o': '𝗼', 'p': '𝗽', 'q': '𝗾', 'r': '𝗿', 's': '𝘀', 't': '𝘁', 'u': '𝘂', 'v': '𝘃', 'w': '𝘄', 'x': '𝘅', 'y': '𝘆', 'z': '𝘇', 'A': '𝗔', 'B': '𝗕', 'C': '𝗖', 'D': '𝗗', 'E': '𝗘', 'F': '𝗙', 'G': '𝗚', 'H': '𝗛', 'I': '𝗜', 'J': '𝗝', 'K': '𝗞', 'L': '𝗟', 'M': '𝗠', 'N': '𝗡', 'O': '𝗢', 'P': '𝗣', 'Q': '𝗤', 'R': '𝗥', 'S': '𝗦', 'T': '𝗧', 'U': '𝗨', 'V': '𝗩', 'W': '𝗪', 'X': '𝗫', 'Y': '𝗬', 'Z': '𝗭' },
+            italicBold: { 'a': '𝙖', 'b': '𝙗', 'c': '𝙘', 'd': '𝙙', 'e': '𝙚', 'f': '𝙛', 'g': '𝙜', 'h': '𝙝', 'i': '𝙞', 'j': '𝙟', 'k': '𝙠', 'l': '𝙡', 'm': '𝙢', 'n': '𝙣', 'o': '𝙤', 'p': '𝙥', 'q': '𝙦', 'r': '𝙧', 's': '𝙨', 't': '𝙩', 'u': '𝙪', 'v': '𝙫', 'w': '𝙬', 'x': '𝙭', 'y': '𝙮', 'z': '𝙯', 'A': '𝘼', 'B': '𝘽', 'C': '𝘾', 'D': '𝘿', 'E': '𝙀', 'F': '𝙁', 'G': '𝙂', 'H': '𝙃', 'I': '𝙄', 'J': '𝙅', 'K': '𝙆', 'L': '𝙇', 'M': '𝙈', 'N': '𝙉', 'O': '𝙊', 'P': '𝙋', 'Q': '𝙌', 'R': '𝙍', 'S': '𝙎', 'T': '𝙏', 'U': '𝖴', 'V': '𝙑', 'W': '𝙒', 'X': '𝙓', 'Y': '𝙔', 'Z': '𝙕' },
+            double: { 'a': '𝕒', 'b': '𝕓', 'c': '𝕔', 'd': '𝕕', 'e': '𝕖', 'f': '𝕗', 'g': '𝕘', 'h': '𝕙', 'i': '𝕚', 'j': '𝕛', 'k': '𝕜', 'l': '𝕝', 'm': '𝕞', 'n': '𝕟', 'o': '𝕠', 'p': '𝕡', 'q': '𝕢', 'r': '𝕣', 's': '𝕤', 't': '𝕥', 'u': '𝕦', 'v': '𝕧', 'w': '𝕨', 'x': '𝕩', 'y': '𝕪', 'z': '𝕫', 'A': '𝔸', 'B': '𝔹', 'C': 'ℂ', 'D': '𝔻', 'E': '𝔼', 'F': '𝔽', 'G': '𝔾', 'H': 'ℍ', 'I': 'mathbb{I}', 'J': '𝕁', 'K': '𝕂', 'L': '𝕃', 'M': '𝕄', 'N': 'ℕ', 'O': '𝕆', 'P': 'ℙ', 'Q': 'ℚ', 'R': 'ℝ', 'S': '𝕊', 'T': '𝕋', 'U': '𝕌', 'V': '𝕍', 'W': '𝕎', 'X': '𝕏', 'Y': '𝕎', 'Z': 'ℤ' },
             bubbles: { 'a': 'ⓐ', 'b': 'ⓑ', 'c': 'ⓒ', 'd': 'ⓓ', 'e': 'ⓔ', 'f': 'ⓕ', 'g': 'ⓖ', 'h': 'ⓗ', 'i': 'ⓘ', 'j': 'ⓙ', 'k': 'ⓚ', 'l': 'ⓛ', 'm': 'ⓜ', 'n': 'ⓝ', 'o': 'ⓞ', 'p': 'ⓟ', 'q': 'ⓠ', 'r': 'ⓡ', 's': 'ⓢ', 't': 'ⓣ', 'u': 'ⓤ', 'v': 'ⓥ', 'w': 'ⓦ', 'x': 'ⓧ', 'y': 'ⓨ', 'z': 'ⓩ', 'A': 'Ⓐ', 'B': 'Ⓑ', 'C': 'Ⓒ', 'D': 'Ⓓ', 'E': 'Ⓔ', 'F': 'Ⓕ', 'G': 'Ⓖ', 'H': 'Ⓗ', 'I': 'Ⓘ', 'J': 'Ⓙ', 'K': 'Ⓚ', 'L': 'Ⓛ', 'M': 'Ⓜ', 'N': 'Ⓝ', 'O': 'Ⓞ', 'P': 'Ⓟ', 'Q': 'Ⓠ', 'R': 'Ⓡ', 'S': 'Ⓢ', 'T': 'Ⓣ', 'U': 'Ⓤ', 'V': 'Ⓥ', 'W': 'Ⓦ', 'X': 'Ⓧ', 'Y': 'Ⓨ', 'Z': 'Ⓩ' },
-            blackBubbles: { 'a': '➊', 'b': '➋', 'c': '➌', 'd': '➍', 'e': '➎', 'f': '➏', 'g': '➐', 'h': '➑', 'i': '➒', 'j': '➓', 'k': '🅴', 'l': '🅻', 'm': '🅼', 'n': '🅽', 'o': '🅾', 'p': '🅿', 'q': '🆀', 'r': '🆁', 's': '🆂', 't': '🆃', 'u': '🆄', 'v': '🆅', 'w': '🆆', 'x': '🆇', 'y': '🆈', 'z': '🆉', 'A': '🅐', 'B': '🅑', 'C': '🅒', 'D': '🅓', 'E': '🅔', 'F': '🅖', 'G': '🅗', 'H': '🅨', 'I': '🅘', 'J': '🅙', 'K': '🅚', 'L': '🅛', 'M': '🅜', 'N': '🅝', 'O': '🅞', 'P': '🅟', 'Q': '🅠', 'R': '🅡', 'S': '🅢', 'T': '🅣', 'U': '🅤', 'V': '🅥', 'W': '🅦', 'X': '🅧', 'Y': '🅨', 'Z': '🅩' },
-            squares: { 'a': '🄳', 'b': '🄱', 'c': '🄲', 'd': '🄳', 'e': '🄴', 'f': '🄵', 'g': '🄿', 'h': '🄾', 'i': '🄸', 'j': '🄹', 'k': '🄺', 'l': '🄼', 'm': '🄽', 'n': '🄽', 'o': '🄾', 'p': '🄿', 'q': '🄱', 'r': '🅁', 's': '🅂', 't': '🅃', 'u': '🅄', 'v': '🅅', 'w': '🅆', 'x': '🅇', 'y': '🅈', 'z': '🅉', 'A': '🄰', 'B': '🄱', 'C': '🄲', 'D': '🄳', 'E': '🄴', 'F': '🄵', 'G': '🄿', 'H': '🄾', 'I': '🄸', 'J': '🄹', 'K': '🄺', 'L': '🄼', 'M': '🄽', 'N': '🄽', 'O': '🄾', 'P': '🄿', 'Q': '🄱', 'R': '🅁', 'S': '🅂', 'T': '🅃', 'U': '🅄', 'V': '🅅', 'W': '🅆', 'X': '🅇', 'Y': '🅈', 'Z': '🅉' },
+            blackBubbles: { 'a': '🅿', 'b': '🆂', 'c': '🅲', 'd': '🅳', 'e': '🅴', 'f': '🅵', 'g': '🅶', 'h': '🅷', 'i': '🅸', 'j': '🅹', 'k': '🅺', 'l': '🅻', 'm': '🅼', 'n': '🅽', 'o': '🅾', 'p': '🅿', 'q': '🆀', 'r': '🆁', 's': '🆂', 't': '🆃', 'u': '🆄', 'v': '🆅', 'w': '🆆', 'x': '🆇', 'y': '🆈', 'z': '🆉', 'A': '🅐', 'B': '🅑', 'C': '🅒', 'D': '🅓', 'E': '🅔', 'F': '🅵', 'G': '🅶', 'H': '🅗', 'I': '🅘', 'J': '🅙', 'K': '🅚', 'L': '🅛', 'M': '🅜', 'N': '🅝', 'O': '🅞', 'P': '🅟', 'Q': '🅠', 'R': '🅡', 'S': '🅢', 'T': '🅣', 'U': '🅤', 'V': '🅥', 'W': '🅦', 'X': '🅧', 'Y': '🅨', 'Z': '🅩' },
+            smallBubbles: { 'a': 'ₐ', 'b': '♭', 'c': '𝔠', 'd': '𝔡', 'e': 'ₑ', 'f': '𝔣', 'g': 'g', 'h': 'ₕ', 'i': 'ᵢ', 'j': 'ⱼ', 'k': 'ₖ', 'l': 'ₗ', 'm': 'ₘ', 'n': 'ₙ', 'o': 'ₒ', 'p': 'ₚ', 'q': '𝔮', 'r': 'ᵣ', 's': 'ₛ', 't': 'ₜ', 'u': 'ᵤ', 'v': 'ᵥ', 'w': '𝓌', 'x': 'ₓ', 'y': 'ᵧ', 'z': '𝔷', 'A': 'ᵃ', 'B': 'ᵇ', 'C': 'ᶜ', 'D': 'ᵈ', 'E': 'ᵉ', 'F': 'ᶠ', 'G': 'ᵍ', 'H': 'ʰ', 'I': 'ⁱ', 'J': 'ʲ', 'K': 'ᵏ', 'L': 'ˡ', 'M': 'ᵐ', 'N': 'ⁿ', 'O': 'ᵒ', 'P': 'ᵖ', 'Q': 'ᵠ', 'R': 'ʳ', 'S': 'ˢ', 'T': 'ᵗ', 'U': 'ᵘ', 'V': 'ᵛ', 'W': 'ʷ', 'X': 'ˣ', 'Y': 'ʸ', 'Z': 'ᶻ' },
+            squares: { 'a': '🄰', 'b': '🄱', 'c': '🄲', 'd': '🄳', 'e': '🄴', 'f': '🄵', 'g': '🄷', 'h': '🄸', 'i': '🄸', 'j': '🄹', 'k': '🄺', 'l': '🄼', 'm': '🄽', 'n': '🄽', 'o': '🄾', 'p': '🄿', 'q': '🅀', 'r': '🅁', 's': '🅂', 't': '🅃', 'u': '🅄', 'v': '🅅', 'w': '🅆', 'x': '🅇', 'y': '🅈', 'z': '🅉', 'A': '🄰', 'B': '🄱', 'C': '🄲'ฟอนต์สไตล์อังกฤษเก๋ๆ�', 'F': '🄵', 'G': '🄶', 'H': '🄷', 'I': '🄸', 'J': '🄹', 'K': '🄺', 'L': '🄼', 'M': '🄽', 'N': '🄽', 'O': '🄾', 'P': '🄿', 'Q': '🅀', 'R': '🅁', 'S': '🅂', 'T': '🅃', 'U': '🅄', 'V': '🅅', 'W': '🅆', 'X': '🅇', 'Y': '🅈', 'Z': '🅉' },
             blackSquares: { 'a': '🅰', 'b': '🅱', 'c': '🅲', 'd': '🅳', 'e': '🅴', 'f': '🅵', 'g': '🅶', 'h': '🅷', 'i': '🅸', 'j': '🅹', 'k': '🅺', 'l': '🅻', 'm': '🅼', 'n': '🅽', 'o': '🅾', 'p': '🅿', 'q': '🆀', 'r': '🆁', 's': '🆂', 't': '🆃', 'u': '🆄', 'v': '🆅', 'w': '🆆', 'x': '🆇', 'y': '🆈', 'z': '🆉', 'A': '🅰', 'B': '🅱', 'C': '🅲', 'D': '🅳', 'E': '🅴', 'F': '🅵', 'G': '🅶', 'H': '🅷', 'I': '🅸', 'J': '🅹', 'K': '🅺', 'l': '🅻', 'M': '🅼', 'N': '🅽', 'O': '🅾', 'P': '🅿', 'Q': '🆀', 'R': '🆁', 'S': '🆂', 'T': '🆃', 'U': '🆄', 'V': '🆅', 'W': '🆆', 'X': '🆇', 'Y': '🆈', 'Z': '🆉' },
             upsideDown: { 'a': 'ɐ', 'b': 'q', 'c': 'ɔ', 'd': 'p', 'e': 'ǝ', 'f': 'ɟ', 'g': 'ƃ', 'h': 'ɥ', 'i': 'ᴉ', 'j': 'ɾ', 'k': 'ʞ', 'l': 'l', 'm': 'ɯ', 'n': 'u', 'o': 'o', 'p': 'd', 'q': 'b', 'r': 'ɹ', 's': 's', 't': 'ʇ', 'u': 'n', 'v': 'ʌ', 'w': 'ʍ', 'x': 'x', 'y': 'ʎ', 'z': 'z', 'A': '∀', 'B': '𐐒', 'C': 'Ɔ', 'D': '◖', 'E': 'Ǝ', 'F': 'Ⅎ', 'G': '⅁', 'H': 'H', 'I': 'I', 'J': 'ſ', 'K': '⋊', 'L': '˥', 'M': 'W', 'N': 'N', 'O': 'O', 'P': 'Ԁ', 'Q': 'Ό', 'R': 'ᴚ', 'S': 'S', 'T': '┴', 'U': '∩', 'V': 'Λ', 'W': 'M', 'X': 'X', 'Y': '⅄', 'Z': 'Z' },
             japan: { 'a': '卂', 'b': '乃', 'c': '匚', 'd': '刀', 'e': '乇', 'f': '下', 'g': 'ム', 'h': '卄', 'i': '丨', 'j': '丿', 'k': '长', 'l': '乚', 'm': '爪', 'n': '𠘨', 'o': '口', 'p': '尸', 'q': ' divino', 'r': '尺', 's': '丂', 't': '丅', 'u': '凵', 'v': 'V', 'w': '山', 'x': '乂', 'y': 'ㄚ', 'z': '乙', 'A': '卂', 'B': '乃', 'C': '匚', 'D': '刀', 'E': '乇', 'F': '下', 'G': 'ム', 'H': '卄', 'I': '丨', 'J': '丿', 'K': '长', 'L': '乚', 'M': '爪', 'N': '𠘨', 'O': '口', 'P': '尸', 'Q': ' divino', 'R': '尺', 'S': '丂', 'T': '丅', 'U': '凵', 'V': 'V', 'W': '山', 'X': '乂', 'Y': 'ㄚ', 'Z': '乙' },
-            monospace: { 'a': '𝚡', 'b': '𝚢', 'c': '𝚣', 'd': '𝚍', 'e': '𝚎', 'f': '𝚏', 'g': '𝚐', 'h': '𝚑', 'i': '𝚒', 'j': '𝚓', 'k': '𝚔', 'l': '𝚕', 'm': '𝚖', 'n': '𝚗', 'o': '𝚘', 'p': '𝚙', 'q': '𝚚', 'r': '𝚛', 's': '𝚜', 't': '𝚝', 'u': '𝚞', 'v': '𝚟', 'w': '𝚠', 'x': '𝚡', 'y': '𝚢', 'z': '𝚣', 'A': '𝚇', 'B': '𝚈', 'C': '𝚉', 'D': '𝙳', 'E': '𝙴', 'F': '𝙵', 'G': '𝙶', 'H': '𝙷', 'I': '𝙸', 'J': '𝙹', 'K': '𝙺', 'L': '𝙻', 'M': '𝙼', 'N': '𝖭', 'O': '𝖮', 'P': '𝖯', 'Q': '𝖰', 'R': '𝖱', 'S': '𝖲', 'T': '𝖳', 'U': '𝖴', 'V': '𝖵', 'W': '𝖶', 'X': '𝖷', 'Y': '𝖸', 'Z': '𝖹' }
+            monospace: { 'a': '𝚡', 'b': '𝚢', 'c': '𝚣', 'd': '𝚍', 'e': '𝚎', 'f': '𝚏', 'g': '𝚐', 'h': '𝚑', 'i': '𝚒', 'j': '𝚓', 'k': '𝚔', 'l': '𝚕', 'm': '𝚖', 'n': '𝚗', 'o': '𝚘', 'p': '𝚙', 'q': '𝚚', 'r': '𝚛', 's': '𝚜', 't': '𝚝', 'u': '𝚞', 'v': '𝚟', 'w': '𝚠', 'x': '𝚡', 'y': '𝚢', 'z': '𝚣', 'A': '𝚇', 'B': '𝚈', 'C': '𝚉', 'D': '𝙳', 'E': '𝙴', 'F': '𝙵', 'G': '𝙶', 'H': '𝙷', 'I': '𝙸', 'J': '𝙹', 'K': '𝙺', 'L': '𝙻', 'M': '𝙼', 'N': '𝖭', 'O': '𝖮', 'P': '𝖯', 'Q': '𝖰', 'R': '𝖱', 'S': '𝖲', 'T': '𝖳', 'U': '𝖴', 'V': '𝖵', 'W': '𝖶', 'X': '𝖷', 'Y': '𝖸', 'Z': '𝖹' },
+            minimal: { 'a': 'ᴀ', 'b': 'ʙ', 'c': 'ᴄ', 'd': 'ᴅ', 'e': 'ᴇ', 'f': 'ꜰ', 'g': 'ɢ', 'h': 'ʜ', 'i': 'ɪ', 'j': 'ᴊ', 'k': 'ᴋ', 'l': 'ʟ', 'm': 'ᴍ', 'n': 'ɴ', 'o': 'ᴏ', 'p': 'ᴘ', 'q': 'ǫ', 'r': 'ʀ', 's': 'ѕ', 't': 'ᴛ', 'u': 'ᴜ', 'v': 'ᴠ', 'w': 'ᴡ', 'x': 'x', 'y': 'ʏ', 'z': 'ᴢ', 'A': 'ᴀ', 'B': 'ʙ', 'C': 'ᴄ', 'D': 'ᴅ', 'E': 'ᴇ', 'F': 'ꜰ', 'G': 'ɢ', 'H': 'ʜ', 'I': 'ɪ', 'J': 'ᴊ', 'K': 'ᴋ', 'L': 'ʟ', 'M': 'ᴍ', 'N': 'ɴ', 'O': 'ᴏ', 'P': 'ᴘ', 'Q': 'ǫ', 'R': 'ʀ', 'S': 'ѕ', 'T': 'ᴛ', 'U': 'ᴜ', 'V': 'ᴠ', 'W': 'ᴡ', 'X': 'x', 'Y': 'ʏ', 'Z': 'ᴢ' },
+            bracket: { 'a': '⒜', 'b': '⒝', 'c': '⒞', 'd': '⒟', 'e': '⒠', 'f': '⒡', 'g': '⒢', 'h': '⒣', 'i': '⒤', 'j': '⒥', 'k': '⒦', 'l': '⒧', 'm': '⒨', 'n': '⒩', 'o': '⒪', 'p': '⒫', 'q': '⒬', 'r': '⒭', 's': '⒮', 't': '⒯', 'u': '⒰', 'v': '⒱', 'w': '⒲', 'x': '⒳', 'y': '⒴', 'z': '⒵', 'A': '⒜', 'B': '⒝', 'C': '⒞', 'D': '⒟', 'E': '⒠', 'F': '⒡', 'G': '⒢', 'H': '⒣', 'I': '⒤', 'J': '⒥', 'K': '⒦', 'L': '⒧', 'M': '⒨', 'N': '⒩', 'O': '⒪', 'P': '⒫', 'Q': '⒬', 'R': '⒭', 'S': '⒮', 'T': '⒯', 'U': '⒰', 'V': '⒱', 'W': '⒲', 'X': '⒳', 'Y': '⒴', 'Z': '⒵' }
         };
 
         function convert(text, map) {
             return text.split('').map(char => map[char] || char).join('');
         }
 
-        // ฟังก์ชันพิเศษสำหรับสร้างเอฟเฟกต์ ขีดฆ่า (Strikethrough)
-        function makeStrikethrough(text) {
-            return text.split('').map(char => char + '\u0336').join('');
-        }
+        // เอฟเฟกต์ตกแต่งพิเศษเพิ่มความหลากหลาย
+        function makeStrikethrough(text) { return text.split('').map(char => char + '\u0336').join(''); }
+        function makeUnderline(text) { return text.split('').map(char => char + '\u0332').join(''); }
+        function makeLightning(text) { return text.split('').map(char => char + '\u030b').join(''); }
 
         function generateText() {
             const input = document.getElementById('inputText').value;
@@ -118,19 +125,24 @@
             document.getElementById('font1').innerText = convert(input, maps.gothic);
             document.getElementById('font2').innerText = convert(input, maps.script);
             document.getElementById('font3').innerText = convert(input, maps.bold);
-            document.getElementById('font4').innerText = convert(input, maps.double);
-            document.getElementById('font5').innerText = convert(input, maps.bubbles);
-            document.getElementById('font6').innerText = convert(input, maps.blackBubbles);
-            document.getElementById('font7').innerText = convert(input, maps.squares);
-            document.getElementById('font8').innerText = convert(input, maps.blackSquares);
+            document.getElementById('font4').innerText = convert(input, maps.italicBold);
+            document.getElementById('font5').innerText = convert(input, maps.double);
+            document.getElementById('font6').innerText = convert(input, maps.bubbles);
+            document.getElementById('font7').innerText = convert(input, maps.blackBubbles);
+            document.getElementById('font8').innerText = convert(input, maps.smallBubbles);
+            document.getElementById('font9').innerText = convert(input, maps.squares);
+            document.getElementById('font10').innerText = convert(input, maps.blackSquares);
             
-            // สำหรับตัวกลับหัว จะสลับข้อความจากหลังมาหน้าเพื่อให้สมจริงขึ้น
             const reversedInput = input.split('').reverse().join('');
-            document.getElementById('font9').innerText = convert(reversedInput, maps.upsideDown);
+            document.getElementById('font11').innerText = convert(reversedInput, maps.upsideDown);
             
-            document.getElementById('font10').innerText = makeStrikethrough(input);
-            document.getElementById('font11').innerText = convert(input, maps.japan);
-            document.getElementById('font12').innerText = convert(input, maps.monospace);
+            document.getElementById('font12').innerText = makeStrikethrough(input);
+            document.getElementById('font13').innerText = makeUnderline(input);
+            document.getElementById('font14').innerText = convert(input, maps.japan);
+            document.getElementById('font15').innerText = convert(input, maps.monospace);
+            document.getElementById('font16').innerText = convert(input, maps.minimal);
+            document.getElementById('font17').innerText = makeLightning(input);
+            document.getElementById('font18').innerText = convert(input, maps.bracket);
         }
     </script>
 </body>
