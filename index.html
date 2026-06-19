@@ -14,7 +14,6 @@
         .nav a.active { background: #3b82f6; color: white; }
 
         input { width: 100%; padding: 12px 15px; font-size: 16px; margin-bottom: 20px; box-sizing: border-box; border: 2px solid #cbd5e1; border-radius: 8px; outline: none; }
-        input:focus { border-color: #3b82f6; box-shadow: 0 0 6px rgba(59, 130, 246, 0.2); }
         
         .grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 25px; }
         @media (min-width: 480px) { .grid { grid-template-columns: 1fr 1fr; } }
@@ -22,11 +21,11 @@
         
         .font-box { border: 1px solid #e2e8f0; padding: 10px 12px; border-radius: 8px; background: #ffffff; text-align: left; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         .font-name { font-size: 10px; color: #94a3b8; font-weight: bold; text-transform: uppercase; margin-bottom: 4px; }
-        .result { font-size: 15px; word-break: break-all; min-height: 25px; color: #0f172a; font-weight: 500; line-height: 2.5; padding: 2px 0; }
+        .result { font-size: 15px; word-break: break-all; min-height: 25px; color: #0f172a; font-weight: 500; line-height: 2.2; }
 
         .ad-space { max-width: 728px; margin: 30px auto 10px auto; padding: 15px; background-color: #f1f5f9; border: 1px dashed #cbd5e1; border-radius: 8px; color: #94a3b8; font-size: 12px; text-align: center; }
         .ad-contact { font-size: 11px; color: #64748b; margin-top: 8px; }
-        .ad-contact a { color: #3b82f6; text-decoration: none; font-weight: bold; margin: 0 5px; }
+        .ad-contact a { color: #3b82f6; text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -37,53 +36,57 @@
     </div>
 
     <h2>Srytext ✨</h2>
-    <p>พิมพ์ข้อความภาษาไทย หรือ ภาษาอังกฤษ เพื่อเปลี่ยนเป็นอักษรพิเศษ</p>
-    
-    <input type="text" id="inputText" placeholder="พิมพ์ข้อความที่นี่..." oninput="generateText()">
+    <p>พิมพ์ข้อความที่นี่เพื่อเปลี่ยนฟอนต์</p>
+    <input type="text" id="inputText" placeholder="พิมพ์ข้อความ..." oninput="generateText()">
 
     <div class="grid">
         <div class="font-box"><div class="font-name">Thai Waves 🌊</div><div class="result" id="th1"></div></div>
         <div class="font-box"><div class="font-name">Thai Cross ✖</div><div class="result" id="th2"></div></div>
         <div class="font-box"><div class="font-name">Thai Sparkle ✨</div><div class="result" id="th3"></div></div>
-        <div class="font-box"><div class="font-name">Strikethrough</div><div class="result" id="font10"></div></div>
-        <div class="font-box"><div class="font-name">Underline</div><div class="result" id="font13"></div></div>
-        <div class="font-box"><div class="font-name">Lightning</div><div class="result" id="font17"></div></div>
-        <div class="font-box"><div class="font-name">Gothic</div><div class="result" id="font1"></div></div>
-        <div class="font-box"><div class="font-name">Script</div><div class="result" id="font2"></div></div>
-        <div class="font-box"><div class="font-name">Bold</div><div class="result" id="font3"></div></div>
-        <div class="font-box"><div class="font-name">Double Struck</div><div class="result" id="font5"></div></div>
-        <div class="font-box"><div class="font-name">Bubbles</div><div class="result" id="font6"></div></div>
-        <div class="font-box"><div class="font-name">Minimal</div><div class="result" id="font16"></div></div>
+        <div class="font-box"><div class="font-name">Gothic</div><div class="result" id="f1"></div></div>
+        <div class="font-box"><div class="font-name">Script</div><div class="result" id="f2"></div></div>
+        <div class="font-box"><div class="font-name">Bold</div><div class="result" id="f3"></div></div>
+        <div class="font-box"><div class="font-name">Double Struck</div><div class="result" id="f4"></div></div>
+        <div class="font-box"><div class="font-name">Bubbles</div><div class="result" id="f5"></div></div>
+        <div class="font-box"><div class="font-name">Squares</div><div class="result" id="f6"></div></div>
+        <div class="font-box"><div class="font-name">Small Caps</div><div class="result" id="f7"></div></div>
+        <div class="font-box"><div class="font-name">Inverted</div><div class="result" id="f8"></div></div>
+        <div class="font-box"><div class="font-name">Typewriter</div><div class="result" id="f9"></div></div>
     </div>
 
     <div class="ad-space">พื้นที่โฆษณาของคุณ</div>
-    <div class="ad-contact">📢 ติดต่อลงโฆษณา: <a href="https://www.facebook.com/search/top/?q=Jirayu%20Namwong" target="_blank">Facebook</a> | <a href="https://www.instagram.com/uwu_uta" target="_blank">Instagram</a></div>
+    <div class="ad-contact">📢 ติดต่อ: <a href="https://www.facebook.com/search/top/?q=Jirayu%20Namwong" target="_blank">Facebook</a> | <a href="https://www.instagram.com/uwu_uta" target="_blank">Instagram</a></div>
 
     <script>
-        const maps = { gothic: {'a':'𝔞','b':'𝔟','c':'𝔠','d':'𝔡','e':'𝔢','f':'𝔣','g':'𝔤','h':'𝔥','i':'𝔦','j':'𝔧','k':'𝔨','l':'𝔩','m':'𝔪','n':'𝔫','o':'𝔬','p':'𝔭','q':'𝔮','r':'𝔯','s':'𝔰','t':'𝔱','u':'𝔲','v':'𝔳','w':'𝔴','x':'𝔵','y':'𝔶','z':'𝔷','A':'𝔄','B':'𝔅','C':'ℭ','D':'𝔇','E':'𝔈','F':'𝔉','G':'𝔊','H':'ℌ','I':'ℑ','J':'𝔍','K':'𝔎','L':'𝔏','M':'𝔐','N':'𝔑','O':'𝔒','P':'𝔓','Q':'𝔔','R':'ℛ','S':'𝔖','T':'𝔗','U':'𝔘','V':'𝔙','W':'𝔚','X':'𝔛','Y':'𝔜','Z':'ℨ'},
-                       script: {'a':'𝓪','b':'𝓫','c':'𝓬','d':'𝓭','e':'𝓮','f':'𝓯','g':'𝓰','h':'𝓱','i':'𝓲','j':'𝓳','k':'𝓴','l':'𝓵','m':'𝓶','n':'𝓷','o':'𝓸','p':'𝓹','q':'𝓺','r':'𝓻','s':'𝓼','t':'𝓽','u':'𝓾','v':'𝓿','w':'𝔀','x':'𝔁','y':'𝔂','z':'𝔃','A':'𝓐','B':'𝓑','C':'𝓒','D':'𝓓','E':'𝓔','F':'𝓕','G':'𝓖','H':'𝓗','I':'𝓘','J':'𝓙','K':'𝓚','L':'𝓛','M':'𝓜','N':'𝓝','O':'𝓞','P':'𝓟','Q':'𝓠','R':'𝓡','S':'𝓢','T':'𝓣','U':'𝓤','V':'𝓥','W':'𝓦','X':'𝓧','Y':'𝓨','Z':'𝓩'},
-                       bold: {'a':'𝗮','b':'𝗯','c':'𝗰','d':'𝗱','e':'𝗲','f':'𝗳','g':'𝗴','h':'𝗵','i':'𝗶','j':'𝗷','k':'𝗸','l':'𝗹','m':'𝗺','n':'𝗻','o':'𝗼','p':'𝗽','q':'𝗾','r':'𝗿','s':'𝘀','t':'𝘁','u':'𝘂','v':'𝘃','w':'𝘄','x':'𝘅','y':'𝘆','z':'𝘇','A':'𝗔','B':'𝗕','C':'𝗖','D':'𝗗','E':'𝗘','F':'𝗙','G':'𝗚','H':'𝗛','I':'𝗜','J':'𝗝','K':'𝗞','L':'𝗟','M':'𝗠','N':'𝗡','O':'𝗢','P':'𝗣','Q':'𝗤','R':'𝗥','S':'𝗦','T':'𝗧','U':'𝗨','V':'𝗩','W':'𝗪','X':'𝗫','Y':'𝗬','Z':'𝗭'},
-                       double: {'a':'𝕒','b':'𝕓','c':'𝕔','d':'𝕕','e':'𝕖','f':'𝕗','g':'𝕘','h':'𝕙','i':'𝕚','j':'𝕛','k':'𝕜','l':'𝕝','m':'𝕞','n':'𝕟','o':'𝕠','p':'𝕡','q':'𝕢','r':'𝕣','s':'𝕤','t':'𝕥','u':'𝕦','v':'𝕧','w':'𝕨','x':'𝕩','y':'𝕪','z':'𝕫','A':'𝔸','B':'𝔹','C':'ℂ','D':'𝔻','E':'𝔼','F':'𝔽','G':'𝔾','H':'ℍ','I':'𝕀','J':'𝕁','K':'𝕂','L':'𝕃','M':'𝕄','N':'ℕ','O':'𝕆','P':'ℙ','Q':'ℚ','R':'ℝ','S':'𝕊','T':'𝕋','U':'𝕌','V':'𝕍','W':'𝕎','X':'𝕏','Y':'𝕐','Z':'ℤ'},
-                       bubbles: {'a':'ⓐ','b':'ⓑ','c':'ⓒ','d':'ⓓ','e':'ⓔ','f':'ⓕ','g':'ⓖ','h':'ⓗ','i':'ⓘ','j':'ⓙ','k':'ⓚ','l':'ⓛ','m':'ⓜ','n':'ⓝ','o':'ⓞ','p':'ⓟ','q':'ⓠ','r':'ⓡ','s':'ⓢ','t':'ⓣ','u':'ⓤ','v':'ⓥ','w':'ⓦ','x':'ⓧ','y':'ⓨ','z':'ⓩ','A':'Ⓐ','B':'Ⓑ','C':'Ⓒ','D':'Ⓓ','E':'Ⓔ','F':'Ⓕ','G':'Ⓖ','H':'Ⓗ','I':'Ⓘ','J':'Ⓙ','K':'Ⓚ','L':'Ⓛ','M':'Ⓜ','N':'Ⓝ','O':'Ⓞ','P':'Ⓟ','Q':'Ⓠ','R':'Ⓡ','S':'Ⓢ','T':'Ⓣ','U':'Ⓤ','V':'Ⓥ','W':'Ⓦ','X':'Ⓧ','Y':'Ⓨ','Z':'Ⓩ'},
-                       minimal: {'a':'ᴀ','b':'ʙ','c':'ᴄ','d':'ᴅ','e':'ᴇ','f':'ꜰ','g':'ɢ','h':'ʜ','i':'ɪ','j':'ᴊ','k':'ᴋ','l':'ʟ','m':'ᴍ','n':'ɴ','o':'ᴏ','p':'ᴘ','q':'ǫ','r':'ʀ','s':'s','t':'ᴛ','u':'ᴜ','v':'ᴠ','w':'ᴡ','x':'x','y':'ʏ','z':'ᴢ'}
+        const maps = {
+            gothic: { 'a': '𝔞', 'b': '𝔟', 'c': '𝔠', 'd': '𝔡', 'e': '𝔢', 'f': '𝔣', 'g': '𝔤', 'h': '𝔥', 'i': '𝔦', 'j': '𝔧', 'k': '𝔨', 'l': '𝔩', 'm': '𝔪', 'n': '𝔫', 'o': '𝔬', 'p': '𝔭', 'q': '𝔮', 'r': '𝔯', 's': '𝔰', 't': '𝔱', 'u': '𝔲', 'v': '𝔳', 'w': '𝔴', 'x': '𝔵', 'y': '𝔶', 'z': '𝔷' },
+            script: { 'a': '𝓪', 'b': '𝓫', 'c': '𝓬', 'd': '𝓭', 'e': '𝓮', 'f': '𝓯', 'g': '𝓰', 'h': '𝓱', 'i': '𝓲', 'j': '𝓳', 'k': '𝓴', 'l': '𝓵', 'm': '𝓶', 'n': '𝓷', 'o': '𝓸', 'p': '𝓹', 'q': '𝓺', 'r': '𝓻', 's': '𝓼', 't': '𝓽', 'u': '𝓾', 'v': '𝓿', 'w': '𝔀', 'x': '𝔁', 'y': '𝔂', 'z': '𝔃' },
+            bold: { 'a': '𝗮', 'b': '𝗯', 'c': '𝗰', 'd': '𝗱', 'e': '𝗲', 'f': '𝗳', 'g': '𝗴', 'h': '𝗵', 'i': '𝗶', 'j': '𝗷', 'k': '𝗸', 'l': '𝗹', 'm': '𝗺', 'n': '𝗻', 'o': '𝗼', 'p': '𝗽', 'q': '𝗾', 'r': '𝗿', 's': '𝘀', 't': '𝘁', 'u': '𝘂', 'v': '𝘃', 'w': '𝘄', 'x': '𝘅', 'y': '𝘆', 'z': '𝘇' },
+            double: { 'a': '𝕒', 'b': '𝕓', 'c': '𝕔', 'd': '𝕕', 'e': '𝕖', 'f': '𝕗', 'g': '𝕘', 'h': '𝕙', 'i': '𝕚', 'j': '𝕛', 'k': '𝕜', 'l': '𝕝', 'm': '𝕞', 'n': '𝕟', 'o': '𝕠', 'p': '𝕡', 'q': '𝕢', 'r': '𝕣', 's': '𝕤', 't': '𝕥', 'u': '𝕦', 'v': '𝕧', 'w': '𝕨', 'x': '𝕩', 'y': '𝕪', 'z': '𝕫' },
+            bubbles: { 'a': 'ⓐ', 'b': 'ⓑ', 'c': 'ⓒ', 'd': 'ⓓ', 'e': 'ⓔ', 'f': 'ⓕ', 'g': 'ⓖ', 'h': 'ⓗ', 'i': 'ⓘ', 'j': 'ⓙ', 'k': 'ⓚ', 'l': 'ⓛ', 'm': 'ⓜ', 'n': 'ⓝ', 'o': 'ⓞ', 'p': 'ⓟ', 'q': 'ⓠ', 'r': 'ⓡ', 's': 'ⓢ', 't': 'ⓣ', 'u': 'ⓤ', 'v': 'ⓥ', 'w': 'ⓦ', 'x': 'ⓧ', 'y': 'ⓨ', 'z': 'ⓩ' },
+            squares: { 'a': '🄰', 'b': '🄱', 'c': '🄲', 'd': '🄳', 'e': '🄴', 'f': '🄵', 'g': '🄶', 'h': '🄷', 'i': '🄸', 'j': '🄹', 'k': '🄺', 'l': '🄻', 'm': '🄼', 'n': '🄽', 'o': '🄾', 'p': '🄿', 'q': '🅀', 'r': '🅁', 's': '🅂', 't': '🅃', 'u': '🅄', 'v': '🅅', 'w': '🅆', 'x': '🅇', 'y': '🅈', 'z': '🅉' },
+            smallcaps: { 'a': 'ᴀ', 'b': 'ʙ', 'c': 'ᴄ', 'd': 'ᴅ', 'e': 'ᴇ', 'f': 'ꜰ', 'g': 'ɢ', 'h': 'ʜ', 'i': 'ɪ', 'j': 'ᴊ', 'k': 'ᴋ', 'l': 'ʟ', 'm': 'ᴍ', 'n': 'ɴ', 'o': 'ᴏ', 'p': 'ᴘ', 'q': 'ǫ', 'r': 'ʀ', 's': 's', 't': 'ᴛ', 'u': 'ᴜ', 'v': 'ᴠ', 'w': 'ᴡ', 'x': 'x', 'y': 'ʏ', 'z': 'ᴢ' },
+            inverted: { 'a': 'ɐ', 'b': 'q', 'c': 'ɔ', 'd': 'p', 'e': 'ǝ', 'f': 'ɟ', 'g': 'ƃ', 'h': 'ɥ', 'i': 'ᴉ', 'j': 'ɾ', 'k': 'ʞ', 'l': 'l', 'm': 'ɯ', 'n': 'u', 'o': 'o', 'p': 'd', 'q': 'b', 'r': 'ɹ', 's': 's', 't': 'ʇ', 'u': 'n', 'v': 'ʌ', 'w': 'ʍ', 'x': 'x', 'y': 'ʎ', 'z': 'z' },
+            typewriter: { 'a': '𝚊', 'b': '𝚋', 'c': '𝚌', 'd': '𝚍', 'e': '𝚎', 'f': '𝚏', 'g': '𝚐', 'h': '𝚑', 'i': '𝚒', 'j': '𝚓', 'k': '𝚔', 'l': '𝚕', 'm': '𝚖', 'n': '𝚗', 'o': '𝚘', 'p': '𝚙', 'q': '𝚚', 'r': '𝚛', 's': '𝚜', 't': '𝚝', 'u': '𝚞', 'v': '𝚟', 'w': '𝚠', 'x': '𝚡', 'y': '𝚢', 'z': '𝚣' }
         };
 
-        function convert(text, map) { return text.split('').map(char => map[char] || char).join(''); }
-        function makeThaiStyle(text, symbol) { return text.split('').map(char => { const code = char.charCodeAt(0); return (code >= 0x0E30 && code <= 0x0E4E) || char === ' ' ? char : char + symbol; }).join(''); }
+        function convert(text, map) { return text.split('').map(c => map[c.toLowerCase()] || c).join(''); }
+        function makeThaiStyle(text, symbol) { return text.split('').map(c => { const code = c.charCodeAt(0); return (code >= 0x0E30 && code <= 0x0E4E) || c === ' ' ? c : c + symbol; }).join(''); }
+        
         function generateText() {
             const input = document.getElementById('inputText').value;
             document.getElementById('th1').innerText = makeThaiStyle(input, '\u0303');
             document.getElementById('th2').innerText = makeThaiStyle(input, '\u0337');
             document.getElementById('th3').innerText = makeThaiStyle(input, '\u031a');
-            document.getElementById('font10').innerText = input.split('').map(c => c + '\u0336').join('');
-            document.getElementById('font13').innerText = input.split('').map(c => c + '\u0332').join('');
-            document.getElementById('font17').innerText = input.split('').map(c => c + '\u030b').join('');
-            document.getElementById('font1').innerText = convert(input, maps.gothic);
-            document.getElementById('font2').innerText = convert(input, maps.script);
-            document.getElementById('font3').innerText = convert(input, maps.bold);
-            document.getElementById('font5').innerText = convert(input, maps.double);
-            document.getElementById('font6').innerText = convert(input, maps.bubbles);
-            document.getElementById('font16').innerText = convert(input, maps.minimal);
+            document.getElementById('f1').innerText = convert(input, maps.gothic);
+            document.getElementById('f2').innerText = convert(input, maps.script);
+            document.getElementById('f3').innerText = convert(input, maps.bold);
+            document.getElementById('f4').innerText = convert(input, maps.double);
+            document.getElementById('f5').innerText = convert(input, maps.bubbles);
+            document.getElementById('f6').innerText = convert(input, maps.squares);
+            document.getElementById('f7').innerText = convert(input, maps.smallcaps);
+            document.getElementById('f8').innerText = convert(input, maps.inverted);
+            document.getElementById('f9').innerText = convert(input, maps.typewriter);
         }
     </script>
 </body>
